@@ -1800,27 +1800,56 @@ body {
 }
 
 /* ---------------------------------------------------------------- */
-/* Frost layer — the 3D film runs behind the whole page, so the copy */
-/* sits on glass instead of closing the scene off                     */
+/* Frost layer — the 3D film runs behind the whole page, so the copy  */
+/* sits on glass rather than closing the scene off                    */
 /* ---------------------------------------------------------------- */
 :root {
-  --glass: rgba(16, 19, 24, 0.6);
-  --glass-deep: rgba(10, 12, 15, 0.46);
-  --frost: blur(24px) saturate(150%);
+  --glass: rgba(14, 17, 22, 0.42);
+  --glass-deep: rgba(8, 10, 14, 0.3);
+  --glass-edge: rgba(226, 214, 199, 0.17);
+  --frost: blur(40px) saturate(168%) brightness(0.99);
 }
 
 .card,
 .panel--hero .reveal {
+  position: relative;
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 58%),
-    linear-gradient(168deg, var(--glass) 0%, var(--glass-deep) 100%);
-  border: 1px solid rgba(240, 232, 222, 0.16);
+    radial-gradient(126% 108% at 20% -12%, rgba(255, 246, 232, 0.1) 0%, rgba(255, 246, 232, 0) 58%),
+    radial-gradient(88% 66% at 104% -4%, rgba(216, 158, 92, 0.16) 0%, rgba(216, 158, 92, 0) 62%),
+    linear-gradient(166deg, var(--glass) 0%, var(--glass-deep) 100%);
+  border: 1px solid var(--glass-edge);
   -webkit-backdrop-filter: var(--frost);
   backdrop-filter: var(--frost);
   box-shadow:
-    0 26px 70px rgba(74, 42, 18, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 -1px 0 rgba(74, 42, 18, 0.06) inset;
+    0 34px 88px -22px rgba(0, 0, 0, 0.62),
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 240, 220, 0.16),
+    inset 0 -20px 46px -30px rgba(0, 0, 0, 0.7);
+}
+
+/* inside the hall the film is darker still, so those cards get more body */
+#servicii .card,
+#calitate .card,
+#galerie .card {
+  background:
+    radial-gradient(126% 108% at 20% -12%, rgba(255, 246, 232, 0.12) 0%, rgba(255, 246, 232, 0) 58%),
+    radial-gradient(88% 66% at 104% -4%, rgba(216, 158, 92, 0.14) 0%, rgba(216, 158, 92, 0) 62%),
+    linear-gradient(166deg, rgba(14, 17, 22, 0.58) 0%, rgba(8, 10, 14, 0.44) 100%);
+}
+
+/* the glass catches the light: one soft sheen, no milkiness */
+.card::after,
+.panel--hero .reveal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(112deg, rgba(255, 240, 214, 0.14) 0%, rgba(255, 240, 214, 0.03) 24%, rgba(255, 240, 214, 0) 44%),
+    radial-gradient(120% 58% at 50% 120%, rgba(216, 158, 92, 0.14) 0%, rgba(216, 158, 92, 0) 64%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
 }
 
 /* the copy keeps its contrast even over a bright sky frame */
@@ -1830,11 +1859,24 @@ body {
   z-index: 1;
 }
 
-/* the warm wash over the scene gets lighter: no milky film, no black corners */
+/* contact card joins the same glass so the film never stops */
+.contact {
+  background:
+    radial-gradient(120% 100% at 18% -10%, rgba(255, 246, 232, 0.1) 0%, rgba(255, 246, 232, 0) 58%),
+    linear-gradient(160deg, var(--glass) 0%, var(--glass-deep) 100%);
+  border: 1px solid var(--glass-edge);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  box-shadow:
+    0 30px 80px -22px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 240, 220, 0.14);
+}
+
+/* the wash over the scene stays thin: the golden hour does the lighting */
 .veil {
   background:
-    radial-gradient(125% 95% at 50% 42%, rgba(0, 0, 0, 0) 46%, rgba(0, 0, 0, 0.16) 100%),
-    linear-gradient(180deg, rgba(10, 12, 16, 0.34) 0%, rgba(10, 12, 16, 0) 24%, rgba(10, 12, 16, 0) 66%, rgba(0, 0, 0, 0.22) 100%);
+    radial-gradient(125% 95% at 50% 42%, rgba(6, 8, 11, 0) 46%, rgba(4, 6, 9, 0.44) 100%),
+    linear-gradient(180deg, rgba(6, 8, 11, 0.5) 0%, rgba(6, 8, 11, 0) 26%, rgba(6, 8, 11, 0) 66%, rgba(4, 6, 9, 0.58) 100%);
 }
 
 @media (max-width: 900px) {
