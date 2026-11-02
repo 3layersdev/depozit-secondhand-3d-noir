@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------------- */
+/* Ediția noir — loaded after styles.css, only the last mile of UI   */
+/* that still pointed at the warm paper build                        */
+/* ---------------------------------------------------------------- */
+
+body {
+  background: #0a0c10;
+  color: #f4eee4;
+}
+
+.loader {
+  background: #0a0c10;
+}
+
+.loader__mark {
+  color: #f4eee4;
+}
+
+.loader__sub,
+.loader__pct {
+  color: #a2948a;
+}
+
+.lightbox {
+  background: rgba(6, 7, 9, 0.94);
+}
+
+.lightbox__img {
+  background: #14181e;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.7);
+}
+
+/* glass keeps a cool edge so the panels read as glass, not as holes */
+.card,
+.panel--hero .reveal {
+  background:
+    radial-gradient(130% 90% at 50% 0%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(168deg, rgba(19, 22, 28, 0.72) 0%, rgba(10, 12, 16, 0.66) 100%);
+  border: 1px solid rgba(244, 238, 228, 0.16);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+/* the scene behind is night-lit already: less veil, more contrast */
+.veil {
+  background:
+    radial-gradient(128% 96% at 50% 44%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.62) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 26%, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+.header {
+  background: linear-gradient(180deg, rgba(8, 9, 12, 0.92), rgba(8, 9, 12, 0));
+}
+
+.rail__dot,
+.rail__line {
+  border-color: rgba(244, 238, 228, 0.3);
+}
+
+@media (max-width: 900px) {
+  .card,
+  .panel--hero .reveal {
+    background:
+      radial-gradient(140% 90% at 50% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 62%),
+      linear-gradient(168deg, rgba(21, 25, 31, 0.9) 0%, rgba(12, 15, 19, 0.86) 100%);
+  }
+}
